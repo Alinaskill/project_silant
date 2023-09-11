@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<a class="back-page" href="{% url 'complaint_list' %}"><i class="fas fa-long-arrow-alt-left"></i>Назад</a>
+<h3>Создание рекламации</h3>
+<form class="form" name="complaintForm" method="post" action="{{request.path}}">
+    {% csrf_token %}
+    <div><label for="id_date_failure">{{form.date_of_failure.label}}</label> {{form.date_of_failure}}</div>
+    <div class="united">
+        <label for="id_car">{{form.car.label}}</label> {{form.car}}
+        <label for="id_operating_time">{{form.operating_hours.label}}</label> {{form.operating_hours}}
+    </div>
+    <div><label for="id_node_failure">{{form.failure_node.label}}</label> {{form.failure_node}}</div>
+    <div><label for="id_description_failure">{{form.failure_description.label}}</label> {{form.failure_description}}</div>
+    <div><label for="id_method_recovery">{{form.restoration_method.label}}</label> {{form.restoration_method}}</div>
+    <div><label for="id_repair_parts">{{form.used_spare_parts.label}}</label> {{form.used_spare_parts}}</div>
+    <div class="united">
+        <label for="id_date_recovery">{{form.restoration_date.label}}</label> {{form.restoration_date}}
+        <label for="id_downtime">{{form.downtime_hours.label}}</label> {{form.downtime_hours}}
+    </div>
+    <div><label for="id_service_company">{{form.service_company.label}}</label> {{form.service_company}}</div>
+    <button type="submit">Сохранить</button>
+</form>
+{% endblock %}
